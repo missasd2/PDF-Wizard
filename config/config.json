@@ -1,0 +1,8 @@
+{
+  "SOURCE_DIR":"./mypdf/",
+  "TEMP_DIR":"./.tmp/",
+  "LOG_DIR_PATH":"./.log/",
+  "OUT_DIR":"./outfile/",
+  "IMG_SUFFIX":".jpg",
+  "CUT_PAGE_NUM":"5"
+}
