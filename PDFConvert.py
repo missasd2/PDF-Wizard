@@ -127,19 +127,19 @@ class PDFTool(QMainWindow):
         """
         :return: list
         """
-        dir_path = QFileDialog.getExistingDirectory(self, '文件夹选取', settings['SOURCE_DIR'])
+        dir_path = QFileDialog.getExistingDirectory(self, '请选择文件夹', settings['SOURCE_DIR'])
         self.convert_files_path = []
+
         for x in os.listdir(dir_path):
             if x[-4:].lower() == ".pdf":
                 self.convert_files_path.append('%s/%s' % (dir_path, x))
+        filenames_str = "、".join([x.split("/")[-1] for x in self.convert_files_path])
+        self.statusBar().showMessage("已经选中文件：%s" % filenames_str)
 
     # 执行方法
     # pdf 转换图片
     def convert_exe_Clicked(self):
-        self.statusBar().showMessage("处理过程中~~~")
-        import time
-
-        time.sleep(1)
+        self.statusBar().showMessage("处理过程中,请稍等~~~")
         # 创建线程池
         file_num = len(self.convert_files_path)
         processes = file_num if file_num < 4 else 4
@@ -151,7 +151,7 @@ class PDFTool(QMainWindow):
             for filename in os.listdir(convert.tmp_path):
                 path = convert.tmp_path + filename
                 threadpool.apply_async(convert.convert_to_img, (path,))
-
+                # convert.convert_to_img(path)
         # 关闭池，不许再添加线程
         threadpool.close()
 

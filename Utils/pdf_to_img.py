@@ -20,7 +20,7 @@ LOG_FORMAT = "%(asctime)s %(levelname)s: %(pathname)s:%(lineno)d - %(message)s"
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 # log
-log_file = LOG_DIR_PATH + datetime.datetime.strftime(datetime.date.today(), "%Y-%m-%d")
+log_file = LOG_DIR_PATH + datetime.datetime.strftime(datetime.date.today(), "%Y-%m-%d") + '.log'
 logging.basicConfig(level=logging.DEBUG, filename=log_file, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 
